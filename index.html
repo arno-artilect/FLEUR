@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>What The FLEUR | Premium Event Styling</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="shortcut icon" href="./favicon.ico">
     <!-- Google Fonts + Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -67,72 +70,27 @@
             transition: all 0.3s;
         }
 
-        /* ========== PREMIUM 3D METALLIC LOGO ========== */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            position: relative;
-        }
-        .logo-text-wrapper {
-            display: flex;
-            flex-direction: column;
-            line-height: 1;
-        }
-        .logo-script {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.4rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, #e6c38a 0%, #f5e2b0 25%, #c9a458 50%, #f5e2b0 75%, #e6c38a 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 0 8px rgba(212,175,122,0.4);
-            letter-spacing: 1px;
-        }
-        .logo-fleur {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: 3px;
-            background: linear-gradient(145deg, #f0d89e 0%, #d4af7a 25%, #b88b40 50%, #d4af7a 75%, #f5e2b0 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 0 12px rgba(212,175,122,0.5);
-            position: relative;
-            display: inline-block;
-        }
-        /* 3D metallic extrusion effect */
-        .logo-fleur::before {
-            content: "FLEUR";
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            background: linear-gradient(145deg, #a67c3a, #7a5828);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            z-index: -1;
-            opacity: 0.7;
-        }
-        /* Flower SVG */
-        .logo-flower {
-            width: 52px;
+        /* Logo image styling */
+        .logo-img {
             height: 52px;
-            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
-            transition: transform 0.3s ease;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+            transition: transform 0.3s ease, filter 0.3s;
         }
-        .logo-flower:hover {
-            transform: scale(1.05);
+        .logo-img:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 10px var(--gold-glow));
         }
-        /* Responsive logo */
+        body.light .logo-img {
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+        }
         @media (max-width: 640px) {
-            .logo-script { font-size: 1rem; }
-            .logo-fleur { font-size: 1.4rem; }
-            .logo-flower { width: 38px; height: 38px; }
-            .logo-container { gap: 6px; }
+            .logo-img {
+                height: 40px;
+                max-width: 160px;
+            }
         }
 
         /* Theme Toggle Button */
@@ -262,6 +220,21 @@
             opacity: 0.6;
             z-index: 15;
             color: var(--text-primary);
+        }
+
+        /* Mobile hero text adjustment - move up */
+        @media (max-width: 768px) {
+            .hero-overlay {
+                bottom: 25%;
+            }
+            .hero-overlay h1 {
+                font-size: 2.2rem;
+                letter-spacing: 4px;
+            }
+            .hero-overlay p {
+                font-size: 0.7rem;
+                letter-spacing: 3px;
+            }
         }
 
         /* ========== COLLECTION SECTION ========== */
@@ -497,7 +470,6 @@
         @media (max-width: 700px) {
             .footer-content { flex-direction: column; }
             .pagination-dots { right: 8px; }
-            .hero-overlay h1 { font-size: 2.2rem; }
             .contact-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -505,67 +477,7 @@
 <body>
 
 <div class="navbar">
-    <div class="logo-container">
-        <div class="logo-text-wrapper">
-            <span class="logo-script">What the</span>
-            <span class="logo-fleur">FLEUR</span>
-        </div>
-        <!-- Premium SVG Flower: orange bloom, green swirls, purple/magenta leaves -->
-        <svg class="logo-flower" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <radialGradient id="petalGrad" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#FFB347"/>
-                    <stop offset="70%" stop-color="#FF8C42"/>
-                    <stop offset="100%" stop-color="#E65C1E"/>
-                </radialGradient>
-                <linearGradient id="leafPurple" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#9B59B6"/>
-                    <stop offset="100%" stop-color="#6C3483"/>
-                </linearGradient>
-                <linearGradient id="leafMagenta" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#E84393"/>
-                    <stop offset="100%" stop-color="#C2185B"/>
-                </linearGradient>
-                <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-                    <feMerge>
-                        <feMergeNode in="offsetblur" />
-                        <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                </filter>
-            </defs>
-            <!-- Green Swirls / Stems -->
-            <path d="M58 78 Q68 68 72 58 Q76 48 68 42" stroke="#2E8B57" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M55 80 Q45 72 40 62 Q36 54 42 48" stroke="#3CB371" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M62 75 Q72 70 78 62" stroke="#2E8B57" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- Purple Leaf (bottom right) -->
-            <path d="M75 68 Q85 72 82 62 Q78 58 75 62 Z" fill="url(#leafPurple)" stroke="#D4AF7A" stroke-width="1.2"/>
-            <!-- Magenta/Pink Leaf (bottom right offset) -->
-            <path d="M70 72 Q78 80 80 70 Q76 64 70 68 Z" fill="url(#leafMagenta)" stroke="#D4AF7A" stroke-width="1.2"/>
-            <!-- Flower Petals (Orange) -->
-            <g filter="url(#goldGlow)">
-                <ellipse cx="50" cy="32" rx="11" ry="16" fill="url(#petalGrad)" transform="rotate(0 50 32)" stroke="#D35400" stroke-width="0.8"/>
-                <ellipse cx="50" cy="32" rx="11" ry="16" fill="url(#petalGrad)" transform="rotate(51 50 32)" stroke="#D35400" stroke-width="0.8"/>
-                <ellipse cx="50" cy="32" rx="11" ry="16" fill="url(#petalGrad)" transform="rotate(102 50 32)" stroke="#D35400" stroke-width="0.8"/>
-                <ellipse cx="50" cy="32" rx="11" ry="16" fill="url(#petalGrad)" transform="rotate(153 50 32)" stroke="#D35400" stroke-width="0.8"/>
-                <ellipse cx="50" cy="32" rx="11" ry="16" fill="url(#petalGrad)" transform="rotate(204 50 32)" stroke="#D35400" stroke-width="0.8"/>
-                <ellipse cx="50" cy="32" rx="11" ry="16" fill="url(#petalGrad)" transform="rotate(255 50 32)" stroke="#D35400" stroke-width="0.8"/>
-                <ellipse cx="50" cy="32" rx="11" ry="16" fill="url(#petalGrad)" transform="rotate(306 50 32)" stroke="#D35400" stroke-width="0.8"/>
-                <!-- Center yellow core -->
-                <circle cx="50" cy="32" r="8" fill="#FFD700" stroke="#DAA520" stroke-width="1"/>
-                <circle cx="48" cy="30" r="1.5" fill="#FFA500"/>
-                <circle cx="52" cy="33" r="1.2" fill="#FFA500"/>
-                <circle cx="50" cy="36" r="1" fill="#FFA500"/>
-                <!-- Stamens -->
-                <line x1="50" y1="24" x2="50" y2="20" stroke="#DAA520" stroke-width="1.2"/>
-                <line x1="57" y1="27" x2="60" y2="24" stroke="#DAA520" stroke-width="1.2"/>
-                <line x1="43" y1="27" x2="40" y2="24" stroke="#DAA520" stroke-width="1.2"/>
-                <circle cx="50" cy="19" r="1.5" fill="#FFD700"/>
-                <circle cx="61" cy="23" r="1.5" fill="#FFD700"/>
-                <circle cx="39" cy="23" r="1.5" fill="#FFD700"/>
-            </g>
-        </svg>
-    </div>
+    <img src="./logo.png" alt="What The FLEUR Logo" class="logo-img" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 60%22%3E%3Crect width=%22200%22 height=%2260%22 fill=%22%23d4af7a%22/%3E%3Ctext x=%2210%22 y=%2240%22 font-size=%2224%22 fill=%22%231e1a17%22%3EWHAT THE FLEUR%3C/text%3E%3C/svg%3E';">
     <div class="hamburger" id="hamburger">
         <i class="fas fa-bars"></i>
     </div>
@@ -647,13 +559,13 @@
     import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
     import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
     
-    // ========== HERO 3D SCENE - REDUCED SPACE ABOVE MODEL ==========
+    // ========== HERO 3D SCENE - RAISED MODEL FOR BETTER SPACING ==========
     const heroCanvas = document.getElementById('hero-canvas');
     const heroScene = new THREE.Scene();
     heroScene.background = new THREE.Color(0x050505);
     heroScene.fog = new THREE.FogExp2(0x050505, 0.02);
     
-    // Camera: moved slightly up and pulled back to center the model higher in view
+    // Camera positioned to reduce empty space above
     const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 1.9, 7.0);
     camera.lookAt(0, 0.7, 0);
@@ -680,8 +592,7 @@
     heroScene.add(fillGold);
     
     const fashionGroup = new THREE.Group();
-    // Raise the entire model group to reduce empty space above
-    fashionGroup.position.y = 0.55;
+    fashionGroup.position.y = 0.55; // raised higher to reduce top gap
     heroScene.add(fashionGroup);
     
     const knotGeo = new THREE.TorusKnotGeometry(0.9, 0.2, 260, 48, 3, 4);
@@ -725,11 +636,11 @@
     
     // Products data & mini 3D models
     const productsData = [
-        { name: "Gilded Bloom Vase", price: "R 1,450", desc: "Handcrafted ceramic with 24k gold accents." },
-        { name: "Crystal Cascade", price: "R 2,890", desc: "Swarovski crystal chandelier drops." },
-        { name: "Velvet Opulence", price: "R 980", desc: "Luxury velvet runners & napkins." },
-        { name: "Aura Candle Stand", price: "R 1,250", desc: "Sculptural brass & glass." },
-        { name: "Botanical Arch", price: "R 3,200", desc: "Custom dried floral arch." }
+        { name: "Gilded Bloom Vase", price: "R 1,450", desc: "Handcrafted ceramic with 24k gold accents. Perfect for intimate tablescapes." },
+        { name: "Crystal Cascade", price: "R 2,890", desc: "Swarovski crystal chandelier drops, ideal for adding BIG energy to ceilings." },
+        { name: "Velvet Opulence", price: "R 980", desc: "Luxury velvet runners and napkins set, deep burgundy & gold." },
+        { name: "Aura Candle Stand", price: "R 1,250", desc: "Sculptural brass & glass, sets a moody, elegant glow." },
+        { name: "Botanical Arch", price: "R 3,200", desc: "Custom dried floral arch, statement piece for photo moments." }
     ];
     const container = document.getElementById('productContainer');
     function initMiniModel(canvasEl, type) {
@@ -804,7 +715,7 @@
     dots.forEach(dot => dot.addEventListener('click', () => document.getElementById(dot.dataset.section).scrollIntoView({ behavior: 'smooth' })));
     window.addEventListener('scroll', updateActiveDot);
     updateActiveDot();
-    document.getElementById('contactForm').addEventListener('submit', (e) => { e.preventDefault(); alert('✨ Thank you! We’ll be in touch soon.'); e.target.reset(); });
+    document.getElementById('contactForm').addEventListener('submit', (e) => { e.preventDefault(); alert('✨ Thank you! We’ll be in touch soon to add BIG energy to your event.'); e.target.reset(); });
     window.addEventListener('resize', () => { 
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
@@ -821,7 +732,7 @@
         heroScene.background.setHex(isLight ? 0xf0ede8 : 0x050505);
         heroScene.fog.color.setHex(isLight ? 0xf0ede8 : 0x050505);
     });
-    console.log('✨ What The FLEUR — 3D model raised to reduce top space');
+    console.log('✨ What The FLEUR — logo.png integrated, hero text raised on mobile');
 </script>
 </body>
 </html>
